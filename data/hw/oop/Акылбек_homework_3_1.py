@@ -40,7 +40,6 @@ class T_1000(Terminator):
         def __str__(self):
             return super(T_1000, self).__str__()
 
-
 class TX(Terminator):
 
     def prog(self, prog):
@@ -54,7 +53,6 @@ class TX(Terminator):
 
     def __str__(self):
         return super(TX, self).__str__()
-
 
 class T_3000(T_1000, TX):
 
