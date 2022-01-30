@@ -87,6 +87,8 @@ def update():
                         continue
                 elif db_select is None:
                     break
+                else:
+                    break
 
         elif mark.capitalize() == 'No' or mark.capitalize() == 'N':
             close = input('\nWould you like to add new row in notebook?\n'
