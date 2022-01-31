@@ -78,7 +78,7 @@ try:
                 view()
                 while 1:
                     choice = input("\nSelect a case which will be a marked or exit(press exit or q): ")
-                    db_select = sql.execute("SELECT Issue FROM things WHERE Issue = '{choice}'").fetchone()
+                    db_select = sql.execute(f"SELECT Issue FROM things WHERE Issue = '{choice}'").fetchone()
                     if db_select is not None:
                         if choice == db_select[0]:
                             sql.execute(f"UPDATE things SET Mark = 'Yes' "
