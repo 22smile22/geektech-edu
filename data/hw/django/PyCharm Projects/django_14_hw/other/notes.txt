@@ -1,0 +1,7 @@
+superuser->
+username: root
+password: root
+
+users->
+username: user
+password: User12345
