@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Posts</title>
+</head>
+<body>
+<div>
+    <ul>
+        {% for i in post %}
+        <li>
+            <h2>{{ i.title }}</h2>
+            <p>{{ i.description }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
