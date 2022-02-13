@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shows</title>
+</head>
+<body>
+<div>
+    <ul>
+        {% for i in shows %}
+        <li>
+            <h2><a href="/shows/{{ i.id }}/">{{ i.title }}</a></h2>
+            <p>{{ i.description }}</p>
+            <img src="{{ i.image.url }}" alt="">
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
