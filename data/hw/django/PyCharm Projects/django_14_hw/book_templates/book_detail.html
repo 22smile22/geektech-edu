@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail</title>
+</head>
+<body>
+<h2>Название книги: {{ book_show.title }}</h2>
+    <p>Аннотация книги: {{ book_show.description }}</p>
+    <img src="{{ book_show.image.url }}" alt="">
+    <p>Опубликовано: {{ book_show.created_date }}</p>
+    <p>Изменено: {{ book_show.update_date }}</p>
+    <p>Автор: {{ book_show.author }}</p>
+<div>
+<h2>Comments</h2>
+    <ul>
+        {% for j in book_show.book_comment.all %}
+        <li>
+            <p>{{ j.text }}</p>
+            <p>{{ j.created_date }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>

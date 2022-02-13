@@ -60,7 +60,7 @@ SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(SETTINGS_PATH, "../book_templates")], #добавил запись сюда
+        'DIRS': [os.path.join(SETTINGS_PATH, "book_templates")], #добавил запись сюда
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -130,7 +130,7 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/book_media/'
 
-MEDIA_ROOT = '/book_media/'
+MEDIA_ROOT = 'book_media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

@@ -6,3 +6,4 @@ from django.contrib import admin
 from . import models
 
 admin.site.register(models.Book_shop)
+admin.site.register(models.BookFeedback) #hw2

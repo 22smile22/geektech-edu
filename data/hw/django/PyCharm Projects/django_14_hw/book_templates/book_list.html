@@ -7,13 +7,16 @@
 <body>
 <div>
     <ul>
-        { % for in book %}
+        {% for i in book %}
         <li>
-            <h2>{{ i.title }}</h2>
-            <p>{{ i.description }}</p>
-            <p>{{ i.created_date }}</p>
-            <p>{{ i.update_date }}</p>
-            <p>{{ i.author }}</p>
+            <h2>
+                <a href="/books/{{ i.id }}/">Название книги: {{ i.title }}</a>
+            </h2>
+            <p>Аннотация книги: {{ i.description }}</p>
+            <img src="{{ i.image.url }}" alt="">
+            <p>Опубликовано: {{ i.created_date }}</p>
+            <p>Изменено: {{ i.update_date }}</p>
+            <p>Автор: {{ i.author }}</p>
         </li>
         {% endfor %}
     </ul>
