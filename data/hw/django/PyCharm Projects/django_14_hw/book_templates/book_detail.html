@@ -1,26 +1,77 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Detail</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css/' %}">
 </head>
 <body>
-<h2>Название книги: {{ book_show.title }}</h2>
-    <p>Аннотация книги: {{ book_show.description }}</p>
-    <img src="{{ book_show.image.url }}" alt="">
-    <p>Опубликовано: {{ book_show.created_date }}</p>
-    <p>Изменено: {{ book_show.update_date }}</p>
-    <p>Автор: {{ book_show.author }}</p>
-<div>
-<h2>Comments</h2>
-    <ul>
+<style>
+    body {
+        background-color: #157347;
+        background-image: linear-gradient(43deg, #157347 15%, #CC8855 45%, #ffc720 95%);
+    }
+    .container {
+        max-width: 900px;
+        height: 100%;
+        padding: 0;
+        margin: 20px auto;
+    }
+    .books__body {
+        background-color: #86b7fe;
+        background-image: linear-gradient(85deg, #86b7fe 1%, #ffca2c 95%) ;
+    }
+    .comments__head {
+        background-color: #25cff2;
+        background-image: linear-gradient(80deg, #25cff2 1%, #ffca2c 95%);
+    }
+ </style>
+<div class="container">
+    <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{ book_show.image.url }}" style="width: 100%">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body books__body">
+                    <h5 class="card-title">{{ book_show.title }}</h5>
+                    <p class="card-text">{{ book_show.description }}</p>
+                    <footer class="blockquote-footer">{{ book_show.author }}</footer>
+                    <p class="card-text"><small class="text-muted">{{ book_show.update_date }}</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="comments">
+        <h3 style="padding: 10px 0">Comments</h3>
         {% for j in book_show.book_comment.all %}
-        <li>
-            <p>{{ j.text }}</p>
-            <p>{{ j.created_date }}</p>
-        </li>
+        <div class="card">
+            <div class="card-header comments__head">{{ j.created_date }}</div>
+            <div class="card-body">
+                <p class="card-text">{{ j.text }}</p>
+            </div>
+        </div>
         {% endfor %}
-    </ul>
+    </div>
 </div>
+<!--    <h2>Название книги: {{ book_show.title }}</h2>-->
+<!--    <p>Аннотация книги: {{ book_show.description }}</p>-->
+<!--    <img src="{{ book_show.image.url }}" alt="">-->
+<!--    <p>Опубликовано: {{ book_show.created_date }}</p>-->
+<!--    <p>Изменено: {{ book_show.update_date }}</p>-->
+<!--    <p>Автор: {{ book_show.author }}</p>-->
+
+<!--    <div>-->
+<!--        <h2>Comments</h2>-->
+<!--        <ul>-->
+<!--            {% for j in book_show.book_comment.all %}-->
+<!--            <li>-->
+<!--                <p>{{ j.text }}</p>-->
+<!--                <p>{{ j.created_date }}</p>-->
+<!--            </li>-->
+<!--            {% endfor %}-->
+<!--        </ul>-->
+<!--    </div>-->
 </body>
 </html>

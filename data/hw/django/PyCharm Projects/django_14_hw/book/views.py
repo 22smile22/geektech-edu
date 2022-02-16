@@ -10,6 +10,11 @@ from . import models
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 
+#hw3
+from . import forms
+from django.http import HttpResponse
+from django.shortcuts import reverse, redirect
+
 #def hello_world(request):
 #    return HttpResponse("Hello World!!!")
 
@@ -29,3 +34,15 @@ def get_book_show_detail(request, id):
     except models.Book_shop.DoesNotExist:
         raise Http404("Book does not exist, try another id")
     return render(request, 'book_detail.html', {"book_show" : book_show, "book_comment" : book_comment })
+
+#hw3
+def add_book(request):
+    method = request.method
+    if method == "POST":
+        form = forms.BookShowForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse("book_shows:book_list"))
+    else:
+        form = forms.BookShowForm()
+    return render(request, "add_books.html", {"form" : form})

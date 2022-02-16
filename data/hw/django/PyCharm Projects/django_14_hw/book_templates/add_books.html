@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add book</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css/' %}"/>
+</head>
+<body>
+<style>
+    body {
+        background-color: #86b7fe;
+        background-image: linear-gradient(95deg, #86b7fe 5%, #ffc720 95%);
+    }
+    .container {
+        max-width: 900px;
+        height: 100%;
+        padding: 0;
+        margin: 20px auto;
+    }
+    .add__books {
+        background-color: #3dd5f3;
+        background-image: linear-gradient(95deg, #3dd5f3 5%, #ffc720 95%);
+    }
+</style>
+<div class="container">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body add__books">
+            <h2 class="card-title">Library</h2>
+            <p class="card-text">Forms to add a new book</p>
+            <form action="/add-books/" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Add"/>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
