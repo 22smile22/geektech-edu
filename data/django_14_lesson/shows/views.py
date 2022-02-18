@@ -42,7 +42,23 @@ def add_show(request):
         form = forms.TVShowForm()
     return render(request, "add_shows.html", {"form" : form})
 
+#ls4
+def put_shows_update(request, id):
+    show_id = get_object_or_404(models.TVShow, id=id)
+    if request.method == "POST":
+        form = forms.TVShowForm(instance=show_id,
+                                data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse("shows:shows_list"))
+    else:
+        form = forms.TVShowForm(instance=show_id)
+    return render(request, "shows_update.html", {"form": form,
+                                                 "show": show_id})
 
 
-
-
+def shows_delete(request, id):
+    show_id = get_object_or_404(models.TVShow, id=id)
+    show_id.delete()
+    # return HttpResponse("Show Deleted")
+    return redirect(reverse("shows:shows_list"))

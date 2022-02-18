@@ -1,14 +1,66 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Add shows</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css/' %}">
 </head>
 <body>
-<form action="/add-shows/" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Add" />
+<style>
+    body {
+        background-color: #ff3cac;
+        background-image: linear-gradient(225deg, #ff3cac 0%, #784ba0 50%, #2B86C5 100%);
+    }
+
+    .form_add_shows {
+        margin-top: 20px;
+        border-radius: 160px;
+        border: none;
+    }
+
+    .container__add_show {
+        margin-top: 40px;
+        border-radius: 130px;
+        justify-content: center;
+        gap: 20px;
+        display: flex;
+        height: 100%;
+    }
+    .button_add {
+        justify-content: center;
+        max-width: 800px;
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+    }
+</style>
+<div class="container button_add">
+    <button type="button" class="btn btn-secondary"><a href="/shows/">Shows</a></button>
+</div>
+<div class="container container__add_show">
+    <div class="mb-3 mb__shows">
+        <div class="row gy-6">
+            <form action="" method="POST" enctype="multipart/form-data">
+                <h2>This is form for adding to our list to shows:</h2>
+                {% csrf_token %}
+                <div class="col-6">
+                    <label for="exampleFormControlInput1" class="form-label form_add_shows">{{ form.as_p }}</label>
+                    <input type="submit" class="form-control" id="exampleFormControlInput1" value="Add">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--<div class="mb-3">-->
+<!--    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>-->
+<!--    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>-->
+<!--</div>-->
+
+<!--<form action="/add-shows/" method="POST" enctype="multipart/form-data">-->
+<!--    {% csrf_token %}-->
+<!--    {{ form.as_p }}-->
+<!--    <input type="submit" value="Add"/>-->
 </form>
 </body>
 </html>

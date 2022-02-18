@@ -1,26 +1,73 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Detail</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css/' %}">
 </head>
 <body>
-    <h2>Title: {{ show.title }}</h2>
-        <p>Content: {{ show.description }}</p>
-        <img src="{{ show.image.url }}" alt="">
-        <p>Quantity: {{ show.quantity }}</p>
-        <p>Genre: {{ show.genre }}</p>
-        <p>Created Date: {{ show.created_date }}</p>
-        <p>Updated Date:{{ show.updated_date }}</p>
-<div>
-    <h2>Comments:</h2>
-    <ul>
-        {% for i in show.shows_comment.all %}
-        <li>
-            <p>{{ i.text }}</p>
-        </li>
-        {% endfor %}
-    </ul>
+<style>
+    body {
+        background-color: #ff3cac;
+        background-image: linear-gradient(225deg, #ff3cac 0%, #784ba0 50%, #2B86C5 100%);
+    }
+
+    .body__detail {
+        font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+        margin-bottom: 100px;
+        margin-top: 20px;
+    }
+
+    .show__detail__image {
+        height: 850px;
+        object-fit: cover;
+    }
+
+    .show__detail__container {
+        margin-top: 20px;
+    }
+
+    .body__text {
+        background-color: #ff3cac;
+        background-image: linear-gradient(225deg, #ff3cac 0%, #784ba0 50%, #2B86C5 100%);
+    }
+</style>
+<div class="container show__detail__container">
+    <div class="card">
+        <img src=" {{ show.image.url }}" class="card-img-top show__detail__image" alt="...">
+        <div class="card-body body__detail">
+            <h5 class="card-title"> {{ show.title }}</h5>
+            <p class="card-text body__text">{{ show.description }}.</p>
+            <p class="card-text body__text">{{ show.quantity }}.</p>
+            <p class="card-text body__text">{{ show.genre }}.</p>
+            <p class="card-text body__text">{{ show.duration }}.</p>
+        </div>
+        <div>
+            <h2>Comments:</h2>
+            <ul>
+                {% for i in show.shows_comment.all %}
+                <li>
+                    <p>{{ i.text }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <button type="button" class="btn btn-secondary"><a href="/shows/{{ show.id }}/delete/">Delete</a></button>
+            <button type="button" class="btn btn-secondary"><a href="/shows/{{ show.id }}/update/">Change</a></button>
+        </div>
+    </div>
 </div>
+<!--</div>-->
+<!--    <h2>Title: {{ show.title }}</h2>-->
+<!--        <p>Content: {{ show.description }}</p>-->
+<!--        <img src="{{ show.image.url }}" alt="">-->
+<!--        <p>Quantity: {{ show.quantity }}</p>-->
+<!--        <p>Genre: {{ show.genre }}</p>-->
+<!--        <p>Created Date: {{ show.created_date }}</p>-->
+<!--        <p>Updated Date:{{ show.update_date }}</p>-->
+<!--<div>-->
+
 </body>
 </html>
