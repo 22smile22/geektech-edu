@@ -12,33 +12,48 @@
         background-color: #4158D0;
         background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
     }
+
     .shows__img {
         height: 300px;
         object-fit: cover;
     }
+
     .shows__container {
         max-width: 1000px;
         margin-bottom: 40px;
     }
+
     .shows__card {
         margin-top: 20px;
         /*height: 100%;*/
     }
+
     .shows__body_card {
         background-color: #00DBDE;
         background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
     }
+
     .shows__title {
         font-family: DejaVu Serif, Condensed, sans-serif;
     }
+
     .shows__genre {
         font-family: DejaVu Serif, Condensed, sans-serif;
     }
+    .shows__button {
+        background-color: white;
+    }
 </style>
+<div>
+    <button type="button" class="btn btn-secondary shows__button"><a href="/shows/">All TVShows</a></button>
+    <button type="button" class="btn btn-secondary shows__button"><a href="/shows/anime/">Anime Genre</a></button>
+    <button type="button" class="btn btn-secondary shows__button"><a href="/shows/action/">Action Genre</a></button>
+    <button type="button" class="btn btn-secondary shows__button"><a href="/shows/drama/">Drama Genre</a></button>
+</div>
 <div>
     <div class="container shows__container">
         <div class="row gy-5">
-            {% for i in shows %}
+            {% for i in object_list%}
             <div class="col-3">
                 <div class="card shows__card">
                     <!--<div class="card" style="width: 18rem;">-->

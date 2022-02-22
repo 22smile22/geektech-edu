@@ -35,18 +35,18 @@
 </style>
 <div class="container show__detail__container">
     <div class="card">
-        <img src=" {{ show.image.url }}" class="card-img-top show__detail__image" alt="...">
+        <img src=" {{ object.image.url }}" class="card-img-top show__detail__image" alt="...">
         <div class="card-body body__detail">
-            <h5 class="card-title"> {{ show.title }}</h5>
-            <p class="card-text body__text">{{ show.description }}.</p>
-            <p class="card-text body__text">{{ show.quantity }}.</p>
-            <p class="card-text body__text">{{ show.genre }}.</p>
-            <p class="card-text body__text">{{ show.duration }}.</p>
+            <h5 class="card-title"> {{ object.title }}</h5>
+            <p class="card-text body__text">{{ object.description }}.</p>
+            <p class="card-text body__text">{{ object.quantity }}.</p>
+            <p class="card-text body__text">{{ object.genre }}.</p>
+            <p class="card-text body__text">{{ object.duration }}.</p>
         </div>
         <div>
             <h2>Comments:</h2>
             <ul>
-                {% for i in show.shows_comment.all %}
+                {% for i in object.shows_comment.all %}
                 <li>
                     <p>{{ i.text }}</p>
                 </li>
@@ -54,8 +54,8 @@
             </ul>
         </div>
         <div>
-            <button type="button" class="btn btn-secondary"><a href="/shows/{{ show.id }}/delete/">Delete</a></button>
-            <button type="button" class="btn btn-secondary"><a href="/shows/{{ show.id }}/update/">Change</a></button>
+            <button type="button" class="btn btn-secondary"><a href="/shows/{{ object.id }}/delete/">Delete</a></button>
+            <button type="button" class="btn btn-secondary"><a href="/shows/{{ object.id }}/update/">Change</a></button>
         </div>
     </div>
 </div>
@@ -68,6 +68,5 @@
 <!--        <p>Created Date: {{ show.created_date }}</p>-->
 <!--        <p>Updated Date:{{ show.update_date }}</p>-->
 <!--<div>-->
-
 </body>
 </html>
