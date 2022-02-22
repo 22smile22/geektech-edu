@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete confirm</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css/' %}"/>
+</head>
+<body>
+<style>
+    body {
+        background-color: #86b7fe;
+        background-image: linear-gradient(95deg, #86b7fe 5%, #ffc720 95%);
+    }
+    .container_delete {
+        background-color: #3dd5f3;
+        background-image: linear-gradient(95deg, #3dd5f3 5%, #ffc720 95%);
+        margin-top: 20px;
+        border-radius: 130px;
+        justify-content: center;
+        gap: 20px;
+        display: flex;
+        height: 100%;
+    }
+</style>
+<div class="container container_delete">
+<form action="" method="POST">
+    {% csrf_token %}
+    <h2>Are you sure to delete?</h2>
+    <input type="submit" value="Delete">
+</form>
+    </div>
+</body>
+</html>

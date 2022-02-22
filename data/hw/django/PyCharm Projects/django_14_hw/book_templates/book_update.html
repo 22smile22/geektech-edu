@@ -1,29 +1,61 @@
 <!DOCTYPE html>
 {% load static %}
- <html lang="en">
- <head>
-     <meta charset="UTF-8">
-     <title>Update</title>
-     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
- </head>
- <body>
- <style>
-     body {
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+<style>
+    body {
         background-color: #86b7fe;
         background-image: linear-gradient(95deg, #86b7fe 5%, #ffc720 95%);
-     }
-     .button_books {
+    }
+
+    .container_update {
         background-color: #3dd5f3;
         background-image: linear-gradient(95deg, #3dd5f3 5%, #ffc720 95%);
-     }
- </style>
- <div class="container">
-     <button type="button" class="btn btn-secondary"><a href="/books/">Books</a></button>
- </div>
- <form action="" method="POST" enctype="multipart/form-data">
-     {% csrf_token %}
-     {{ form.as_p }}
-     <input type="submit" value="Change">
- </form>
- </body>
- </html>
+        margin-top: 20px;
+        border-radius: 130px;
+        justify-content: center;
+        gap: 20px;
+        display: flex;
+        height: 100%;
+    }
+
+    .form_change_books {
+        border-radius: 160px;
+        border: none;
+    }
+
+    .button__book {
+        justify-content: center;
+        max-width: 800px;
+        /*display: flex;*/
+        gap: 20px;
+        margin-top: 20px;
+    }
+</style>
+<div class="container button__book">
+    <button type="button" class="btn btn-light"><a href="/books/">Books</a></button>
+</div>
+<div class="container container_update">
+    <div class="mb-3 mb__books">
+        <div class="row gy-6">
+            <form action="" method="POST" enctype="multipart/form-data">
+                <h2>Library</h2>
+                <p class="card-text">Forms to update books</p>
+                {% csrf_token %}
+                <div class="col-6">
+                    <label for="exampleFormControlInput1" class="form-label form_change_books">{{ form.as_p }}</label>
+                    <input type="submit" class="form-control" id="exampleFormControlInput1" value="Change">
+                </div>
+                <!--                {{ form.as_p }}-->
+                <!--                <input type="submit" value="Change">-->
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
