@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Card</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css/' %}">
+</head>
+<body>
+<style>
+    body {
+        background-color: #4158D0;
+        background-image: linear-gradient(43deg, #4158D0 15%, #CC8855 45%, #ffc720 95%);
+    }
+
+    .c__card {
+        margin-top: 25px;
+    }
+
+    .c__body_card {
+        background-color: #0dcaf0;
+        background-image: linear-gradient(89deg, #0dcaf0 1%, #ffc107 99%);
+    }
+
+    .c__title {
+        font-family: DejaVu Sans, Condensed, sans-serif;
+    }
+
+</style>
+<div>
+    <div class="container c__container">
+        <div class="row gy-3">
+            {% for i in object_list %}
+            <div class="col-3">
+                <div class="card c__card">
+                    <img src="{{ i.image }}" alt="">
+                    <div class="card-body c__body_card">
+                        <h5 class="card-title c__title">{{ i.title }}</h5>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div>
+            <button type="button" class="btn btn-info"><a href="/card/{{ object.id }}">To Detail</a></button>
+            <button type="button" class="btn btn-info"><a href="/parser/">To Parse</a></button>
+        </div>
+    </div>
+</body>
+</html>

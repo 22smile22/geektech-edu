@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'book', #добавил название проекта book
+    'parser_app', #hw6
 ]
 
 MIDDLEWARE = [

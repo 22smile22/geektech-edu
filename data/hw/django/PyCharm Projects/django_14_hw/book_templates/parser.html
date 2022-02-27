@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Parser</title>
+</head>
+<body>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Start Parsing">
+</form>
+    <div>
+        <button type="button" class="btn btn-info"><a href="/card/">To Card</a></button>
+    </div>
+</body>
+</html>

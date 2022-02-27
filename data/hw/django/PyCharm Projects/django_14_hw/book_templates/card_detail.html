@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Card Detail</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css/' %}">
+</head>
+<body>
+<style>
+    body {
+        background-color: #157347;
+        background-image: linear-gradient(43deg, #157347 15%, #CC8855 45%, #ffc720 95%);
+    }
+
+    .container {
+        max-width: 900px;
+        height: 100%;
+        padding: 0;
+        margin: 20px auto;
+    }
+
+    .books__body {
+        background-color: #86b7fe;
+        background-image: linear-gradient(85deg, #86b7fe 1%, #ffca2c 95%);
+    }
+
+    .comments__head {
+        background-color: #25cff2;
+        background-image: linear-gradient(80deg, #25cff2 1%, #ffca2c 95%);
+    }
+</style>
+<div class="container">
+    <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{ object.image.url }}" style="width: 100%">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body books__body">
+                    <h5 class="card-title">{{ object.title }}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <div>
+        <button type="button" class="btn btn-info"><a href="/card/">To Card</a></button>
+        <button type="button" class="btn btn-info"><a href="/parser/">To Parse</a></button>
+    </div>
+</div>
+</body>
+</html>
