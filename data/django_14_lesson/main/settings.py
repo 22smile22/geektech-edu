@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog', #добавили блок
     'shows', #ls2
+    'parser_app', #ls6
 ]
 
 MIDDLEWARE = [
