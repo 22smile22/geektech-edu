@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'blog', #добавили блок
     'shows', #ls2
     'parser_app', #ls6
+    'users', #ls7
 ]
 
 MIDDLEWARE = [
