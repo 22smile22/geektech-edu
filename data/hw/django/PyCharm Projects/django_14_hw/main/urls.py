@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("book.urls")), #добавлена запись
     path('', include("parser_app.urls")), #hw6
+    path('', include("users.urls")), #hw7
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # добавлено два статика
 

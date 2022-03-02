@@ -5,3 +5,6 @@ password: root
 users->
 username: user
 password: User12345
+
+username: username1, username2
+password: Python123

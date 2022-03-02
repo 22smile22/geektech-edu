@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'book', #добавил название проекта book
     'parser_app', #hw6
+    'users', #hw7
 ]
 
 MIDDLEWARE = [
