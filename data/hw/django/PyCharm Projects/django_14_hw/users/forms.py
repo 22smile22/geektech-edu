@@ -71,6 +71,15 @@ class LoginForm(AuthenticationForm):
                 }
             )
         )
+    phone_number = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control",
+                "placeholder": "phone-number",
+                "id": "phone-number"
+                }
+            )
+        )
     password = forms.CharField(
         widget=forms.PasswordInput(
             attrs={
