@@ -30,3 +30,21 @@ class ShowComment(models.Model):
     created_date = models.DateField(auto_now_add=True)
     shows = models.ForeignKey(TVShow, on_delete=models.CASCADE, #DO_NOTHING,
                               related_name="shows_comment")
+
+#ls8
+
+class Tag(models.Model):
+    name = models.CharField(max_length=60)
+
+    def __str__(self):
+        return self.name
+
+class Product(models.Model):
+    name = models.CharField(max_length=200)
+    price = models.PositiveIntegerField()
+    description = models.TextField()
+    date_created = models.DateField(auto_now=True)
+    tags = models.ManyToManyField(Tag, related_name="tags_pro")
+
+    def __str__(self):
+        return self.name

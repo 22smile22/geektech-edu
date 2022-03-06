@@ -30,4 +30,5 @@ urlpatterns = [
     #ls3
     # path("add-shows/", views.add_show,name="add_show"),
     path("add-shows/", views.ShowsCreateView.as_view(), name="add_show"),
+    path("products/", views.ProductListView.as_view(), name="products_list"), #ls8
 ]

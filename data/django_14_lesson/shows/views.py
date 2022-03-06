@@ -114,3 +114,15 @@ class ShowsDeleteView(generic.DeleteView):
 #     show_id.delete()
 #     # return HttpResponse("Show Deleted")
 #     return redirect(reverse("shows:shows_list"))
+
+
+#ls8
+
+class ProductListView(generic.ListView):
+    template_name = "product_list.html"
+    queryset = models.Product.objects.all()
+
+
+    def get_queryset(self):
+        return self.queryset
+
