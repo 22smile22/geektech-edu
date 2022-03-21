@@ -21,6 +21,8 @@ from products import views #ls1
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/test/', views.test), #ls1
-    path('api/v1/products/', views.product_list_view), #ls1
+    path('api/v1/test_post/', views.test_post), #ls3
+    # path('api/v1/products/', views.product_list_view), #ls1
+    path('api/v1/products/', views.product_list_create_view), #ls3
     path('api/v1/products/<int:id>/', views.product_item_view), #ls1
 ]
