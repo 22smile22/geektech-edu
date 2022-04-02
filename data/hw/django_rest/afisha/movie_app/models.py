@@ -39,6 +39,7 @@ class Movie(models.Model):
         # return self.reviews.aggregate(models.Avg('stars')).get('stars__avg')
         return self.reviews.aggregate(models.Avg('stars')).get('stars__avg')
 
+
 CHOICES = (
     (1, '1'),
     (2, '2'),

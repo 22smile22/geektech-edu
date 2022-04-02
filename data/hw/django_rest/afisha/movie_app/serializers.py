@@ -37,5 +37,4 @@ class MovieMovieAppSerializer(serializers.ModelSerializer):
 class MoviesReviews(serializers.ModelSerializer):
     class Meta:
         model = Movie
-        fields = 'id title average_rating'.split()
-
+        fields = '__all__'

@@ -1,3 +1,4 @@
+from django.db import models
 from django.shortcuts import render
 
 # Create your views here.
@@ -162,6 +163,6 @@ def review_one(request, id):
 
 @api_view(['GET'])
 def movie_rating_view(request):
-    movie = Movie.objects.all()
-    serializer = MoviesReviews(movie, many=False)
-    return Response(data=serializer.data)
+    movies_rev = Review.objects.aggregate(models.Avg('stars')).get('stars__avg')
+    # serializer = MoviesReviews(movie, many=True)
+    return Response(data={'average_rate': movies_rev})

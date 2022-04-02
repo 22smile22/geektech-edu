@@ -30,5 +30,5 @@ urlpatterns = [
     # path('api/v1/reviews/', views.review_list),
     path('api/v1/reviews/', views.review_list_create_view),
     path('api/v1/reviews/<int:id>/', views.review_one),
-    path('api/v1/movies/reviews/', views.MoviesReviews),
+    path('api/v1/movies/reviews/', views.movie_rating_view),
 ]
