@@ -4,7 +4,8 @@ from django.shortcuts import render
 # Create your views here.
 
 #hw1
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes #hw5
+from rest_framework.permissions import IsAuthenticated #hw5
 from rest_framework.response import Response
 from movie_app.serializers import \
     DirectorMovieAppSerializer, MovieMovieAppSerializer, ReviewMovieAppSerializer, \
@@ -69,8 +70,10 @@ def director_one(request, id):
 #     serializer = MovieMovieAppSerializer(movies, many=True)
 #     return Response(data=serializer.data)
 
-@api_view(['GET', 'POST'])  # 2
+@api_view(['GET', 'POST'])  # hw2
+@permission_classes([IsAuthenticated]) #hw5
 def movie_list_create_view(request):
+    print(request.user) #hw5
     if request.method == 'GET':
         movie = Movie.objects.all()
         serializer = MovieMovieAppSerializer(movie, many=True)
