@@ -8,7 +8,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from movie_app.serializers import \
     DirectorMovieAppSerializer, MovieMovieAppSerializer, ReviewMovieAppSerializer, \
-    MoviesReviews
+    MoviesReviews, \
+    MovieValidateSerializer, DirectorValidateSerializer, ReviewValidateSerializer #hw4
 from movie_app.models import Director, Movie, Review
 from rest_framework import status
 
@@ -25,6 +26,10 @@ def director_list_create_view(request):
         serializer = DirectorMovieAppSerializer(director, many=True)
         return Response(data=serializer.data)
     elif request.method == 'POST':
+        serializers_ = DirectorValidateSerializer(data=request.data)
+        if not serializers_.is_valid():
+            return Response(status=status.HTTP_406_NOT_ACCEPTABLE,
+                            data={'errors': serializers_.errors})
         name = request.data.get('name')
         director = Director.objects.create(name=name)
         return Response(data=DirectorMovieAppSerializer(director).data)
@@ -71,6 +76,11 @@ def movie_list_create_view(request):
         serializer = MovieMovieAppSerializer(movie, many=True)
         return Response(data=serializer.data)
     elif request.method == 'POST':
+        # title = request.data.get('title')
+        serializers_ = MovieValidateSerializer(data=request.data)
+        if not serializers_.is_valid():
+            return Response(status=status.HTTP_406_NOT_ACCEPTABLE,
+                            data={'errors': serializers_.errors})
         title = request.data.get('title')
         description = request.data.get('description')
         duration = request.data.get('duration')
@@ -123,6 +133,10 @@ def review_list_create_view(request):
         serializer = ReviewMovieAppSerializer(review, many=True)
         return Response(data=serializer.data)
     elif request.method == 'POST':
+        serializers_ = ReviewValidateSerializer(data=request.data)
+        if not serializers_.is_valid():
+            return Response(status=status.HTTP_406_NOT_ACCEPTABLE,
+                            data={'errors': serializers_.errors})
         text = request.data.get('text')
         movie_id = request.data.get('movie_id')
         stars = request.data.get('stars')
