@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 
 from products import views #ls1
+from users import views as user_views #ls5
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +26,6 @@ urlpatterns = [
     # path('api/v1/products/', views.product_list_view), #ls1
     path('api/v1/products/', views.product_list_create_view), #ls3
     path('api/v1/products/<int:id>/', views.product_item_view), #ls1
+    path('api/v1/register/', user_views.registration), #ls5
+    path('api/v1/login/', user_views.authorization), #ls5
 ]

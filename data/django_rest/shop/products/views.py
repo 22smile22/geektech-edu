@@ -1,12 +1,13 @@
 # from django.shortcuts import render
 # # Create your views here.
 
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes #ls5
 from rest_framework.response import Response
 from products.serializers import ProductSerializer
 from products.serializers import ProductValidateSerializer #ls4
 from products.models import Product, Review
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated #ls5
 
 
 @api_view(['GET'])
@@ -34,7 +35,9 @@ def test_post(request):
 #     return Response(data=serializer.data)
 
 @api_view(['GET', 'POST']) #ls3
+@permission_classes([IsAuthenticated]) #ls5
 def product_list_create_view(request):
+    print(request.user) #ls5
     if request.method == 'GET':
         products = Product.objects.all()
         serializer = ProductSerializer(products, many=True)
