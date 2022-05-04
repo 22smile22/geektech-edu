@@ -32,8 +32,8 @@ urlpatterns = [
     path('api/v1/login/', user_views.AuthAPIView.as_view()), #ls6
     path('api/v1/brands', views.BrandListAPIView.as_view()), #ls6
     # path('api/v1/brands/<int:id>', views.BrandItemAPIView.as_view()), #ls6
-    path('api/v1/brands/<int:pk>', views.BrandItemAPIView.as_view()), #ls6
+    path('api/v1/brands/<int:pk>/', views.BrandItemAPIView.as_view()), #ls6
     path('api/v1/reviews/', views.ReviewModelViewSet.as_view({'get': 'list', 'post': 'create'})), #ls6
-    path('api/v1/reviews/<int:pk>',
+    path('api/v1/reviews/<int:pk>/',
          views.ReviewModelViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'})), #ls6
 ]
