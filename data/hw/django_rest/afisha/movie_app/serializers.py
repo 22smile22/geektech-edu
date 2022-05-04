@@ -8,7 +8,8 @@ class ReviewMovieAppSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         # fields = '__all__'
-        fields = 'id text stars'.split()
+        # fields = 'id text stars'.split()
+        fields = 'id text movie stars'.split() #hw6
 
 
 class DirectorMovieAppSerializer(serializers.ModelSerializer):

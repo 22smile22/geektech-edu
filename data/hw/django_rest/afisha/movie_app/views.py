@@ -13,6 +13,10 @@ from movie_app.serializers import \
     MovieValidateSerializer, DirectorValidateSerializer, ReviewValidateSerializer #hw4
 from movie_app.models import Director, Movie, Review
 from rest_framework import status
+#hw6
+from rest_framework.generics import ListAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.viewsets import ModelViewSet
 
 # @api_view(['GET'])
 # def director_list(request):
@@ -183,3 +187,43 @@ def movie_rating_view(request):
     movies_rev = Review.objects.aggregate(models.Avg('stars')).get('stars__avg')
     # serializer = MoviesReviews(movie, many=True)
     return Response(data={'average_rate': movies_rev})
+
+
+#hw6
+class DirectorListAPIView(ListCreateAPIView):
+    queryset = Director.objects.all()
+    serializer_class = DirectorMovieAppSerializer
+    # permission_classes = IsAuthenticated,
+    pagination_class = PageNumberPagination
+
+
+class DirectorItemAPIView(RetrieveUpdateDestroyAPIView):
+    queryset = Director.objects.all()
+    serializer_class = DirectorMovieAppSerializer
+
+
+class ReviewListViewSet(ListCreateAPIView):
+    queryset = Review.objects.all()
+    serializer_class = ReviewMovieAppSerializer
+    pagination_class = PageNumberPagination
+
+
+class ReviewItemAPIView(RetrieveUpdateDestroyAPIView):
+    queryset = Review.objects.all()
+    serializer_class = ReviewMovieAppSerializer
+
+
+class ReviewModelViewSet(ModelViewSet):
+    queryset = Review.objects.all()
+    serializer_class = ReviewMovieAppSerializer
+
+
+class MovieListAPIView(ListCreateAPIView):
+    queryset = Movie.objects.all()
+    serializer_class = MovieMovieAppSerializer
+    pagination_class = PageNumberPagination
+
+
+class MovieItemAPIView(RetrieveUpdateDestroyAPIView):
+    queryset = Movie.objects.all()
+    serializer_class = MovieMovieAppSerializer

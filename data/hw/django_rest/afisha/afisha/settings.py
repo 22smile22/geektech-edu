@@ -48,7 +48,9 @@ INSTALLED_APPS = [
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES':[
         'rest_framework.authentication.TokenAuthentication'
-    ]
+    ],
+    #hw6
+    'PAGE_SIZE': 4
 }
 
 MIDDLEWARE = [
