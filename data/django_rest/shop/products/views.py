@@ -1,14 +1,17 @@
 # from django.shortcuts import render
 # # Create your views here.
 
-from rest_framework.decorators import api_view, permission_classes #ls5
+from rest_framework.decorators import api_view, permission_classes  #ls5
 from rest_framework.response import Response
-from products.serializers import ProductSerializer
-from products.serializers import ProductValidateSerializer #ls4
-from products.models import Product, Review
+from products.serializers import ProductSerializer, ProductValidateSerializer  #ls4
+from products.serializers import BrandSerializer, ReviewSerializer  #ls6
+from products.models import Product, Review, Brand  #ls6
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated #ls5
-
+from rest_framework.permissions import IsAuthenticated  #ls5
+from rest_framework.permissions import AllowAny, IsAdminUser  #ls6
+from rest_framework.generics import ListAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView  #ls6
+from rest_framework.pagination import PageNumberPagination  #ls6
+from rest_framework.viewsets import ModelViewSet #ls6
 
 @api_view(['GET'])
 def test(request):
@@ -103,4 +106,24 @@ def product_item_view(request, id):
         product.brand_id = request.data.get('brand id')
         product.save()
         return Response(data=ProductSerializer(product).data)
+
+
+#ls6
+# class BrandListAPIView(ListAPIView):
+class BrandListAPIView(ListCreateAPIView):
+    queryset = Brand.objects.all()
+    serializer_class = BrandSerializer
+    # permission_classes = IsAuthenticated,
+    pagination_class = PageNumberPagination
+
+
+class BrandItemAPIView(RetrieveUpdateDestroyAPIView):
+    queryset = Brand.objects.all()
+    serializer_class = BrandSerializer
+    # lookup_field = 'id'
+
+
+class ReviewModelViewSet(ModelViewSet):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
 

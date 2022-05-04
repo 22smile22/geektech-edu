@@ -11,7 +11,8 @@ from rest_framework.exceptions import ValidationError
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
-        fields = 'id text stars'.split()
+        # fields = 'id text stars'.split()
+        fields = 'id text product stars'.split() #ls6
 
 class BrandSerializer(serializers.ModelSerializer):
     class Meta:
