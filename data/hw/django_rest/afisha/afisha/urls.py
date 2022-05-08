@@ -17,8 +17,10 @@ from django.contrib import admin
 from django.urls import path
 
 from movie_app import views #hw1
-from users import views as user_views #ls5
+from users import views as user_views #hw5
 
+from django.conf import settings #hw7
+from django.conf.urls.static import static  #hw7
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -42,4 +44,4 @@ urlpatterns = [
     # path('api/v1/login/', user_views.authorization),  #hw5
     path('api/v1/register/', user_views.RegisterAPIView.as_view()),  #hw6
     path('api/v1/login/', user_views.AuthAPIView.as_view()),  #hw6
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)  #hw7

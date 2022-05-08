@@ -3,8 +3,10 @@
 import os
 import sys
 
+import dotenv #hw7
 
 def main():
+    dotenv.read_dotenv()  # hw7
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'afisha.settings')
     try:
