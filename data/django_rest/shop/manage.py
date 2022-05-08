@@ -3,8 +3,10 @@
 import os
 import sys
 
+import dotenv #ls7
 
 def main():
+    dotenv.read_dotenv() #ls7
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'shop.settings')
     try:

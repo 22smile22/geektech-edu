@@ -19,6 +19,9 @@ from django.urls import path
 from products import views #ls1
 from users import views as user_views #ls5
 
+from django.conf import settings  #ls7
+from django.conf.urls.static import static  #ls7
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/test/', views.test), #ls1
@@ -36,4 +39,4 @@ urlpatterns = [
     path('api/v1/reviews/', views.ReviewModelViewSet.as_view({'get': 'list', 'post': 'create'})), #ls6
     path('api/v1/reviews/<int:pk>/',
          views.ReviewModelViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'})), #ls6
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)  #ls7

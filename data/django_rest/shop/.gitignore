@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+.idea
+venv
+db.sqlite3
+static
+media
+
+.env
+pgpl-sql.txt
